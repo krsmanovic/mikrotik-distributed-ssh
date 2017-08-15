@@ -1,0 +1,7 @@
+/ip firewall address-list add list=ACCESS address=192.168.200.0/24
+/ip firewall address-list add list=STOP-POOL address=172.16.16.0/24
+/ip firewall nat add chain=srcnat src-address-list=STOP-POOL dst-address-list=ACCESS action=masquerade
+/ip firewall address-list add list=proxy address=172.16.16.0/24
+/ip firewall mangle add action=mark-connection chain=prerouting connection-state=new disabled=no dst-address-list=!ACCESS dst-port=80 new-connection-mark=cancel passthrough=yes protocol=tcp src-address-list=STOP-POOL
+/ip firewall nat add action=redirect chain=dstnat connection-mark=cancel disabled=no dst-port=80 protocol=tcp src-address-list=STOP-POOL to-ports=8080
+/ip proxy access add action=deny disabled=no dst-port="" redirect-to="www.your-website.com/\?index.php?info-page" src-address=172.16.16.0/24 comment="redirect stop pool"
