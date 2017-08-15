@@ -14,8 +14,8 @@ except ImportError:
 
 nlines = 0
 f = open("hosts","r")
-mt_username = "device_admin_username"
-mt_password = "device_mt_password"
+mt_username = "admin_username"
+mt_password = "admin_password"
 timeout = 10
 wrong_login = "Access denied"
 
