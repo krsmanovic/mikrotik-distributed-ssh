@@ -7,4 +7,4 @@ Run the script by issuing
 python mikrotik_ssh.py
 ```
 
-Example files are included in `/script` folder
+Example files are included in `/script` folder together with Python source.
