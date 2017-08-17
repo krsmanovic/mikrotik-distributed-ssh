@@ -1,7 +1,9 @@
 #!usr/bin/python
 
-import socket, errno
-import sys, time
+import socket
+import errno
+import sys
+import time
 try:
     import paramiko
 except ImportError:
@@ -22,7 +24,7 @@ wrong_login = "Access denied"
 for line in f:
     
     if nlines > 0:
-        print "\r\nWaiting 3s before logging to the next device...\n"
+        print "\r\nWaiting 3s before logging on to the next device...\n"
         time.sleep(3)
     
     nlines += 1
@@ -30,6 +32,7 @@ for line in f:
     conn_time = time.strftime("%H:%M:%S")
     host = line.rstrip("\n")
     ssh = paramiko.SSHClient()
+    
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     
     print "\r\nConnecting to " + str(nlines) + ". host: " + host + "\r\n"
@@ -59,6 +62,7 @@ for line in f:
         continue
 
     print "\r\nSuccsessfully connected to the host. Executing commands from the external file:\r\n"
+    
     k = open("commands","r")
     for line in k:
         mt_command = line.rstrip("\n")
@@ -66,7 +70,7 @@ for line in f:
         stdin, stdout, stderr = ssh.exec_command(mt_command)
         print mt_command
 
-    print "\nExternal file commands are executed successfully.\n"
+    print "\nExternal commands are executed successfully.\n"
     k.close()
     ssh.get_transport().close()
     ssh.close()
