@@ -75,6 +75,9 @@ for line in f:
     ssh.get_transport().close()
     ssh.close()
         
-print "\nEnd of the program.\n"
+if nlines == 0:
+	    print "\nList of hosts is empty.\n"
+else:
+        print "\nEnd of the program.\n"
 f.close()
 quit()
