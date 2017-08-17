@@ -76,7 +76,7 @@ for line in f:
     ssh.close()
         
 if nlines == 0:
-	    print "\nList of hosts is empty.\n"
+	print "\nList of hosts is empty.\n"
 else:
         print "\nEnd of the program.\n"
 f.close()
