@@ -8,11 +8,10 @@ try:
     import paramiko
 except ImportError:
     sys.tracebacklimit=0
-    print "\r"
     with open("error.log","ab") as e:
         e.write(time.strftime("%Y.%m.%d") + " " + time.strftime("%H:%M:%S") + " \"Paramiko\" module missing! Please visit http://www.paramiko.org/installing.html for more details." + "\r\n")
     e.close()
-    raise ImportError("Please install \"paramiko\" module! Visit http://www.paramiko.org/installing.html for more details.\r\n")
+    raise ImportError("\rPlease install \"paramiko\" module! Visit http://www.paramiko.org/installing.html for more details.\r\n")
 
 nlines = 0
 f = open("hosts","r")
