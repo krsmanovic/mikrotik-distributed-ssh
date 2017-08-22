@@ -4,7 +4,7 @@ This is a tool for executing many MikroTik commands from external file to many M
 
 Run the script by issuing
 ```
-python mikrotik_ssh.py
+python mikrotik-ssh.py
 ```
 
 Example files are included in `/script` folder together with Python source.
