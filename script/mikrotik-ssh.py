@@ -20,7 +20,6 @@ f = open("hosts","r")
 mt_username = "admin_username"
 mt_password = "admin_password"
 timeout = 10
-wrong_login = "Access denied"
 
 for line in f:
     
@@ -40,7 +39,7 @@ for line in f:
 
     try: 
         ssh.connect(host,username=mt_username,password=mt_password,timeout=timeout)
-
+        
     except socket.timeout as e:
         print "\r\nConnection timeout. Log entry created."
         with open("error.log","ab") as e:
