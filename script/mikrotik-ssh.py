@@ -18,7 +18,10 @@ except ImportError:
 nlines = 0
 f = open("hosts","r")
 mt_username = "script_username"
-mt_password = "script_password"
+ssh_key = paramiko.RSAKey.from_private_key_file("key.ppk")
+# Using ssh keys is strongly advised!
+# If you are unable to setup that method of connecting to your devices, you have the option of the clear text login as well.
+# mt_password = "script_password"
 timeout = 10
 
 for line in f:
@@ -38,7 +41,9 @@ for line in f:
     print("\r\nConnecting to " + str(nlines) + ". host: " + host + "\r\n")
 
     try: 
-        ssh.connect(host,username=mt_username,password=mt_password,timeout=timeout)
+        ssh.connect(host,username=mt_username,pkey=ssh_key,timeout=timeout)
+        # Using ssh keys is strongly advised!
+        # ssh.connect(host,username=mt_username,password=mt_password,timeout=timeout)
         
     except socket.timeout as e:
         print("\r\nConnection timeout. Log entry created.")

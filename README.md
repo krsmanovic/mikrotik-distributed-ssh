@@ -1,6 +1,6 @@
 # MikroTik SSH script based on Python "paramiko" module
 
-This is a tool for executing many MikroTik commands from external `commands` file to many MikroTik routers listed in `hosts` file. Use this type of script only if you are not able to setup ssh keys for whatever the reason. Remember to remove all credentials left in clear text after you have finished your work!
+This is a tool for executing many MikroTik commands from external `commands` file to many MikroTik routers listed in `hosts` file. Using ssh keys method is strongly advised! Remember to remove all credentials left in clear text if you opt in for that type of connection!
 
 Log files `error.log` or `success.log` are appended depending on the result of the script execution.
 
@@ -10,9 +10,9 @@ Populate the files `hosts` (inventory) and `commands` according to your task. Sa
 
 ## 2) Enter the credentials within the script
 
-Edit the `mt_username` and `mt_password` variables to fit your credentials.
+Edit the `mt_username` and `ssh_key` variables according to your environment.
 
-It is strongly advised never to keep credentials in clear text and use ssh keys whenever possible! Remember to remove credentials after you are finished with your work!
+It is strongly advised never to keep credentials in clear text and use ssh keys whenever possible! If you opted in for using clear text passowrd with `mt_password` variable, remember to remove it after you are finished with your work!
 
 ## 3) Run the script
 
